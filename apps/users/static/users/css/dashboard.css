@@ -1,0 +1,141 @@
+html * {
+    font-family: 'Merienda One', Helvetica, sans-serif;
+}
+body {
+    background-image: url("/static/users/images/etc/mainbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.welcomem{
+    position: fixed;
+    top: 11%;
+    left: 5%;
+    animation-delay: 1s;
+}
+#gettingstarted{
+    position: fixed;
+    top: 17%;
+    left: 4%;
+    animation-delay: 1.5s;
+}
+#disclaimer{
+    position: fixed;
+    top: 17%;
+    left: 37%;
+    animation-delay: 1.5s;
+}
+#professional{
+    position: fixed;
+    top: 17%;
+    left: 19%;
+    animation-delay: 1.5s;
+}
+#humanbody{
+    position: fixed;
+    top: 26%;
+    left: 18%;
+    animation-delay: 1.5s;
+}
+.secondaryb{
+    background: linear-gradient(#FFEEEE, #DDEFBB);
+}
+nav{
+    animation-delay: 1s;
+}
+#navlogo{
+    width: 25px;
+    height: 40px;
+    margin: 0% 14%;
+}
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.topbar{
+    margin: 0px 10px;
+}
+.nervousbarb{
+    background: linear-gradient(#2980B9, #6DD5FA, #FFFFFF);
+}
+.vasbarb{
+    background: linear-gradient(#CAC531, #F3F9A7, #FFFFFF);
+}
+.digbarb{
+    background: linear-gradient(#f12711, #f5af19, #FFFFFF);
+}
+.urnbarb{
+    background: linear-gradient(#f953c6, #b91d73, #FFFFFF);
+}
+.skinbarb{
+    background: linear-gradient(#FFAFBD, #ffc3a0, #FFFFFF);
+}
+#maincar{
+    position: fixed;
+    top: 17%;
+    left: 53%;
+    animation-delay: 1.5s;
+}
+.carousel {
+    border-radius: 30px;
+    overflow: hidden;
+}
+#headconbox{
+    display: inline-block;
+    margin: 1%;
+    width: 17%;
+    background: linear-gradient(#2980B9, #6DD5FA, #FFFFFF);
+    text-align: center;
+    font-size: 100%;
+    border-radius: 5%;
+    color: black;
+    line-height: 600%;
+}
+#chestconbox{
+    display: inline-block;
+    margin: 1%;
+    width: 20%;
+    background: linear-gradient(#CAC531, #F3F9A7, #FFFFFF);
+    text-align: center;
+    font-size: 100%;
+    border-radius: 5%;
+    line-height: 600%;
+}
+#digconbox{
+    display: inline-block;
+    margin: 1%;
+    width: 20%;
+    background: linear-gradient(#f12711, #f5af19, #FFFFFF);
+    text-align: center;
+    font-size: 100%;
+    border-radius: 5%;
+    line-height: 600%;
+}
+#urnconbox{
+    display: inline-block;
+    margin: 1%;
+    width: 20%;
+    background: linear-gradient(#f953c6, #b91d73, #FFFFFF);
+    text-align: center;
+    font-size: 100%;
+    border-radius: 5%;
+    line-height: 600%;
+}
+#skinconbox{
+    display: inline-block;
+    margin: 1%;
+    width: 17%;
+    background: linear-gradient(#FFAFBD, #ffc3a0, #FFFFFF);
+    text-align: center;
+    font-size: 100%;
+    border-radius: 5%;
+    line-height: 600%;
+}
+#accordionDelivery{
+    position: absolute;
+    top: 85%;
+    left: 54%;
+    animation-delay: 1.5s;
+    width: 31%;
+}

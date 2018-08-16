@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Potion Master - Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/animate.min.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <br>
+    <img id='potionlogo' class="animated bounceInDown logocenter" src="{% static 'users/images/etc/potionlogo.png' %}">
+    <img id="webtitle" class="animated fadeInDown titlecenter" src="{% static 'users/images/etc/webtitle.png' %}">
+    <div id='errormsgbox'>
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div id="loginbox" class="animated fadeIn">
+        <form action='/login' method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <br>
+            <p class="font-weight-bold">Email Address:</p>
+            <input name="user_email" type="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <p class="font-weight-bold">Password:</p>
+            <input name="password" type="password" placeholder="Enter Password">
+        </div>
+            <button id="loginbtn" class="btn btn-outline-success">Login</button>
+        </form>
+            <button id="regbtn" class="btn btn-outline-success">Register</button>
+            <br>
+        <form action='/login' method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="user_email" value="guest@guest.com">
+            <input type="hidden" name="password" value="guestpass123">
+            <button type="submit" class="btn btn-outline-info">Login As Guest</button>
+        </form>
+    </div>
+    <div id="reigsterbox" class="hidden">
+    <form action='/registration' method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <br>
+            <p class="font-weight-bold">First Name:</p>
+            <input name='first_name' type="text" Placeholder="Enter First Name">
+        </div>
+        <div class="form-group">
+            <p class="font-weight-bold">Last Name:</p>
+            <input name='last_name' type="text" Placeholder="Enter Last Name">
+        </div>
+        <div class="form-group">
+            <p class="font-weight-bold">Email Address:</p>
+            <input name="user_email" type="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <p class="font-weight-bold">Password:</p>
+            <input name="password" type="password" placeholder="Enter Password">
+        </div>
+        <div class="form-group">
+            <p class="font-weight-bold">Confirm Password:</p>
+            <input name='password_conf' type="password" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+        <br>
+        <p class='smallfont'>Already an User? <a href='' id='already'>Click Here</a> to Login</p>
+    </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'users/js/login.js' %}"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

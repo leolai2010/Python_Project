@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Consult</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/consult.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/animate.min.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navbar-light justify-content-center secondaryb animated fadeInDown fixed-top">
+        <a class="navbar-brand mr-0" href="/"><img id='navlogo' src="{% static 'users/images/etc/potionlogo.png' %}">Potion Master</a>
+        <button class="navbar-toggler ml-1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar justify-content-between align-items-center w-100">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/dashboard"><img src="{% static 'users/images/etc/home.png' %}"> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/allherbs"><img src="{% static 'users/images/etc/herb.png' %}"> All Herbs</a> 
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link topbar" href="/consult"><img src="{% static 'users/images/etc/doctor.png' %}"> Consult</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/cart"><img src="{% static 'users/images/etc/cart.png' %}"> Cart</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/logout"><img src="{% static 'users/images/etc/logout.png' %}"> LogOut</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="mainc animated fadeInUp container">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <button><a class="nav-link" href="/addJob">Add A Consult</a></button>
+            </li>
+        </ul>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col">
+        <h3>Consults Posted</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Consult</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for job in job_info %}
+                <tr>
+                    <th scope="row">{{job.title}}</th>
+                    <td>
+                        <ul style="list-style-type:square">
+                            <li data-toggle="modal" data-target="#jobModal{{job.title}}"><a href="#">View</a></li>
+                            <li><a href='addSol/{{job.id}}'> Add Solution </a></li>                    
+                            {% if job.created_by_id == request.session.user_id %}
+                            <li><a href='editJob/{{job.id}}'> Edit Consult</a></li>
+                            <li><a href='destroy/{{job.id}}'> Cancel Consult</a></li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <div class="col">
+        <h3>My Consults</h3>
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Consult</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for favorite in my_job %}
+              <tr>
+                <th scope="row">{{favorite.title}}</th>
+                <td>
+                    <ul>
+                        <li data-toggle="modal" data-target="#jobModal{{favorite.title}}"><a href="#">View</a></li>
+                        <li><a href='destroy/{{favorite.id}}'>Done</a></li>
+                    </ul>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="w-100"></div>
+        <div class="col"></div>
+        <div class="col">
+            <h3>My Solutions</h3>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Solution For Consult Title</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for sol in sol_info %}
+                    <tr>
+                        <th scope="row">{{ sol.jobs_solution.title}}</th>
+                        <td>
+                            <ul style="list-style-type:square">
+                                <li data-toggle="modal" data-target="#jobModal{{sol.jobs_solution.title}}"><a href="#">View</a></li>
+                                <li><a href='addSol/{{sol.jobs_solution.id}}'> Add Solution </a></li>                    
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    {% for job in job_info %}
+    <div class="modal fade" id="jobModal{{job.title}}" tabindex="-1" role="dialog" aria-labelledby="herbModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header" style="background-color: #F0F0F0;">
+            <h5 class="modal-title">{{job.title}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>{{job.desc}}</p>
+            <p>Solutions:</p>            
+            {% if job.jobs.all %}            
+                {% for comment in job.jobs.all %}
+                <p>{{comment.comment_by.first_name}} said: {{comment.desc}}</p>
+                {% if comment.comment_by_id == request.session.user_id %}
+                <button><a href='editSol/{{comment.id}}'> Edit Solution</a></button>
+                <p></p>
+                <button><a href='deletesol/{{comment.id}}'> Delete Solution</a></button>
+                <p></p>
+                {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>No Solutions Yet!</p>   
+            {% endif %}
+        </div>
+        <div class="modal-footer" style="background-color: #F0F0F0;">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %} 
+    <nav class="animated fadeInUp navbar fixed-bottom">
+        <ol class="breadcrumb secondaryb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/about">About</a></li>
+            <li class="breadcrumb-item"><a href="/contact">Contact</a></li>
+        </ol>
+    </nav>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'users/js/consult.js' %}"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

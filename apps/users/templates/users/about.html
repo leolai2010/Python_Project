@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>About</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/animate.min.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navbar-light justify-content-center secondaryb animated fadeInDown fixed-top">
+        <a class="navbar-brand mr-0" href="/"><img id='navlogo' src="{% static 'users/images/etc/potionlogo.png' %}">Potion Master</a>
+        <button class="navbar-toggler ml-1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar justify-content-between align-items-center w-100">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/dashboard"><img src="{% static 'users/images/etc/home.png' %}"> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/allherbs"><img src="{% static 'users/images/etc/herb.png' %}"> All Herbs</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/consult"><img src="{% static 'users/images/etc/doctor.png' %}"> Consult</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/cart"><img src="{% static 'users/images/etc/cart.png' %}"> Cart</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/logout"><img src="{% static 'users/images/etc/logout.png' %}"> LogOut</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <img id="botplant" class="animated fadeInRight" src="{% static 'users/images/etc/botplant.png' %}">
+        <img id="topplant" class="animated fadeInLeft"src="{% static 'users/images/etc/topplant.png' %}">
+        <div id="profile" class="animated fadeInUp card text-white bg-success mb-3">
+            <div class="card-header text-center">Full Stack Developer & Toxicology Researcher</div>
+                <div class="card-body">
+                    <img class="align-top" src="{% static 'users/images/etc/me.jpg' %}"> 
+                    <div id="profilelinks">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <i class="align-top fab fa-linkedin fa-3x" style='margin:1%'></i>
+                                    <br>
+                                    <a href="https://www.linkedin.com/in/leo-lai-2010/">Linkedln Profile</a>
+                                </th>
+                            </tr>                            
+                            <tr>
+                                <th>
+                                    <i class="align-top fab fa-github-square fa-3x" style='margin:1%;'></i>
+                                    <br>
+                                    <a href="https://github.com/leolai2010">GitHub Profile</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <i class="align-top fas fa-file-contract fa-3x" style='margin:1%;'></i>
+                                    <br>
+                                    <a href="/Potion_Master/apps/users/static/users/images/etc/resume.pdf">Download Resume</a>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p></p>
+                    <h5 class="card-title">Leo Lai B.S. & M.S.</h5>
+                    <p class="card-text">I am a Scientist and a Software Engineer who researched traditional medications during my time at graduate school to find
+                            harmful substances in them. However, there are many benefits that herbal medicine can provide and I decided to use my 
+                            developer skills to provide consumers with more infomation on medicinal herbs.</p>
+                </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+    <nav class="animated fadeInUp navbar fixed-bottom">
+        <ol class="breadcrumb secondaryb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item" aria-current='page'>About</li>
+            <li class="breadcrumb-item"><a href="/contact">Contact</a></li>
+        </ol>
+    </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'users/js/about.js' %}"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

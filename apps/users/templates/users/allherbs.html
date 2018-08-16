@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>All Herbs</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/allherbs.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/animate.min.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navbar-light justify-content-center secondaryb animated fadeInDown fixed-top">
+        <a class="navbar-brand mr-0" href="/"><img id='navlogo' src="{% static 'users/images/etc/potionlogo.png' %}">Potion Master</a>
+        <button class="navbar-toggler ml-1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar justify-content-between align-items-center w-100">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/dashboard"><img src="{% static 'users/images/etc/home.png' %}"> Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link topbar" href="/allherbs"><img src="{% static 'users/images/etc/herb.png' %}"> All Herbs</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/consult"><img src="{% static 'users/images/etc/doctor.png' %}"> Consult</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/cart"><img src="{% static 'users/images/etc/cart.png' %}"> Cart</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/logout"><img src="{% static 'users/images/etc/logout.png' %}"> LogOut</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="animated fadeInDown header">All Herbs</h1>
+        <br>
+        <div class="allherbs animated fadeInUp card-columns">
+            {% for herb in allherbs %}
+            <div class="card">
+                <img class="card-img-top" src="../../static/users/images/herbs/{{herb.picture}}.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">{{ herb.name }}</h5>
+                    <p class="card-text">{{ herb.scientific_name }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#herbModal{{herb.name}}">Info</button>
+                        <form style="display:inline-block;" action="/addcart" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="herbid" value="{{ herb.id }}">
+                            <input type="hidden" name="userid" value="{{ request.session.user_id }}"> 
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                        </form>
+                    </small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% for herb in allherbs %}
+        <div class="modal fade" id="herbModal{{herb.name}}" tabindex="-1" role="dialog" aria-labelledby="herbModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header" style="background-image: url(/static/users/images/herbs/{{herb.picture}}.jpg);
+            background-size: cover; color: white;">
+                <h5 class="modal-title">{{herb.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="font-weight-bold">General Information</p>
+                <p>{{herb.desc}}</p>
+                <p class="font-weight-bold">Delivery Methods</p>
+                <img src="../../static/users/images/delivery/{{herb.delivery_method}}.png">
+                <p></p>
+                <p class="font-weight-bold">Price:</p>
+                <p>${{herb.price}} Per Unit Amount</p>
+            </div>
+            <div class="modal-footer" style="background-color: #F0F0F0;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="/addcart" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="herbid" value="{{ herb.id }}">
+                    <input type="hidden" name="userid" value="{{ request.session.user_id }}"> 
+                <button type="submit" class="btn btn-success">Add to Cart</button>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+        {% endfor %} 
+    <nav class="animated fadeInUp navbar fixed-bottom">
+        <ol class="breadcrumb secondaryb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/about">About</a></li>
+            <li class="breadcrumb-item"><a href="/contact">Contact</a></li>
+        </ol>
+    </nav>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'users/js/allherbs.js' %}"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

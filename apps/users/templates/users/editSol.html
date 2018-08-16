@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Solution</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/consult.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/animate.min.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navbar-light justify-content-center secondaryb animated fadeInDown fixed-top">
+        <a class="navbar-brand mr-0" href="/"><img id='navlogo' src="{% static 'users/images/etc/potionlogo.png' %}">Potion Master</a>
+        <button class="navbar-toggler ml-1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar justify-content-between align-items-center w-100">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/dashboard"><img src="{% static 'users/images/etc/home.png' %}"> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/allherbs"><img src="{% static 'users/images/etc/herb.png' %}"> All Herbs</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/consult"><img src="{% static 'users/images/etc/doctor.png' %}"> Consult</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/cart"><img src="{% static 'users/images/etc/cart.png' %}"> Cart</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/logout"><img src="{% static 'users/images/etc/logout.png' %}"> LogOut</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="mainc animated fadeInUp container">
+    <h1>Edit Solution</h1>
+    <br>
+    <div>            
+        <p class="font-weight-bold">Original Solution</p>
+        <p>{{ sol_info.desc }}</p>
+    </div>
+    <br>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action='/editSolfunction' method="POST"> 
+        {% csrf_token %}
+        <div class="form-group">
+            <p>Description:</p>
+            <textarea name = 'description_txt' class="form-control" placeholder="{{job_info.desc}}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <input type='hidden' name='solid' value="{{sol_info.id}}">
+        <input type='hidden' name='userid' value="{{request.session.user_id}}">
+        <p></p>
+        <a href="/consult">Go Back</p>
+    </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'users/js/consult.js' %}"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

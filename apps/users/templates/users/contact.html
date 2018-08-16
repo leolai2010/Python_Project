@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>contact</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/animate.min.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navbar-light justify-content-center secondaryb animated fadeInDown fixed-top">
+        <a class="navbar-brand mr-0" href="/"><img id='navlogo' src="{% static 'users/images/etc/potionlogo.png' %}">Potion Master</a>
+        <button class="navbar-toggler ml-1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar justify-content-between align-items-center w-100">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/dashboard"><img src="{% static 'users/images/etc/home.png' %}"> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/allherbs"><img src="{% static 'users/images/etc/herb.png' %}"> All Herbs</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/consult"><img src="{% static 'users/images/etc/doctor.png' %}"> Consult</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/cart"><img src="{% static 'users/images/etc/cart.png' %}"> Cart</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link topbar" href="/logout"><img src="{% static 'users/images/etc/logout.png' %}"> LogOut</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+            <img id="botplant" class="animated fadeInRight" src="{% static 'users/images/etc/botplant.png' %}">
+            <img id="topplant" class="animated fadeInLeft"src="{% static 'users/images/etc/topplant.png' %}">
+            <div id="profile" class="animated fadeInUp card text-white bg-success mb-3">
+                <div class="card-header text-center">Full Stack Developer & Toxicology Researcher</div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Contact Leo!</h5>
+                        <p>You can reach me at</p>
+                        <p>leolai2010@gmail.com</p>
+                        <p>Or send me a message directly!</p>
+                        <div id="sendform">
+                        <form>
+                            Name:<br>
+                            <input type="text" name="name"><br><br>
+                            E-mail:<br>
+                            <input type="text" name="mail"><br><br>
+                            Comment:<br>
+                            <input type="text" name="comment"><br><br>
+                            <button type="submit" class="btn btn-info"><a href="/dashboard">Send</a></button>
+                        </form>
+                        </div>
+                    </div>
+                <div class="card-footer"></div>
+            </div>
+    </div>
+    <nav class="animated fadeInUp navbar fixed-bottom">
+        <ol class="breadcrumb secondaryb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/about">About</a></li>
+            <li class="breadcrumb-item" aria-current='page'>Contact</li>
+        </ol>
+    </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'users/js/contact.js' %}"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>
