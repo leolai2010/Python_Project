@@ -124,5 +124,5 @@ STATIC_URL = '/static/'
 
 # Stripe API Keys/Connections
 
-STRIPE_SECRET_KEY = 'sk_test'
-STRIPE_PUBLISHABLE_KEY = 'pk_test'
+STRIPE_SECRET_KEY = 'sk_test_twR6PTRLR8gThlp8pRLfAYYn'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_4yK01jEkRICFLhz0GVEsaypZ'
