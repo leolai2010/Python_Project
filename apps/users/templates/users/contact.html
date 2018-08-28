@@ -46,15 +46,29 @@
                         <p>leolai2010@gmail.com</p>
                         <p>Or send me a message directly!</p>
                         <div id="sendform">
-                        <form>
-                            Name:<br>
-                            <input type="text" name="name"><br><br>
-                            E-mail:<br>
-                            <input type="text" name="mail"><br><br>
-                            Comment:<br>
-                            <input type="text" name="comment"><br><br>
-                            <button type="submit" class="btn btn-info"><a href="/dashboard">Send</a></button>
-                        </form>
+                            <form data-aos="fade-up" action="https://formspree.io/leolai2010@gmail.com"
+                                method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Phone:</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Email:</label>
+                                    <input type="email" class="form-control" name="_replyto" placeholder="Email Address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Message:</label>
+                                    <textarea name="message"  placeholder="Leave a Message!" rows="6" class="form-control medium-textarea"></textarea>
+                                </div>
+                                <input type="hidden" name="_next" value="http://www.leohlai.info" />
+                                <div class="center">
+                                <input type="submit" value="Send" class="btn btn-info">
+                                </div>
+                            </form> 
                         </div>
                     </div>
                 <div class="card-footer"></div>
