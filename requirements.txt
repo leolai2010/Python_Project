@@ -43,7 +43,7 @@ scipy==1.1.0
 six==1.11.0
 stripe==2.4.0
 tensorboard==1.8.0
-tensorflow==1.8.0
+tensorflow==2.5.1
 tensorflow-hub==0.1.0
 tensorflowjs==0.5.2
 termcolor==1.1.0
